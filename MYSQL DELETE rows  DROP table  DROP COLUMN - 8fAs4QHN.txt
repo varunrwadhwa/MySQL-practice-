@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS countries;
+CREATE TABLE IF NOT EXISTS countries(
+ID integer AUTO_INCREMENT PRIMARY KEY ,
+NAME varchar(30) 
+);
+
+INSERT INTO countries VALUES(1,'UK'),(2,'US'),(3,'AUS'),(4,'INDIA'),(5,'PAK');
+SELECT * FROM countries;
+
+DELETE FROM countries WHERE ID = 5; 
+SELECT * FROM countries;
+-- deleting rows 
+
+ALTER TABLE countries DROP COLUMN NAME ;
+SELECT * FROM countries;
+-- dropping columns 
+
+DROP TABLE countries;
+SELECT * FROM countries;
+-- droppig tables 

@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS countries;
+CREATE TABLE IF NOT EXISTS countries(
+ID integer AUTO_INCREMENT PRIMARY KEY ,
+NAME varchar(20)
+);
+
+INSERT INTO countries VALUES(1,'USA'),(2,'UK'),(3,'AUS'),(4,'INDIA'),(5,'PAK');
+SELECT * FROM countries;
+
+CREATE VIEW varun AS 
+SELECT ID , NAME 
+FROM countries
+WHERE (ID <3);
+
+-- view is nothing but 'CREATE VIEW varun AS' . anything ahead of that is just normal querying 
+
+SELECT * FROM varun;
+
+-- this is how you call views 

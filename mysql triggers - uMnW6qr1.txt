@@ -1,0 +1,29 @@
+DROP TABLE IF EXISTS countries;
+CREATE TABLE IF NOT EXISTS countries(
+ID integer AUTO_INCREMENT PRIMARY KEY ,
+NAME varchar(20)
+);
+ 
+INSERT INTO countries VALUES(1,'USA'),(2,'UK'),(3,'AUS'),(4,'INDIA'),(5,'PAK');
+
+
+DROP TABLE IF EXISTS updatetime;
+CREATE TABLE IF NOT EXISTS updatetime(
+RECORDS varchar(100)
+);
+
+DELIMITER $$
+CREATE TRIGGER update_trigger 
+AFTER INSERT 
+ON countries
+FOR EACH ROW 
+BEGIN 
+INSERT INTO updatetime VALUES('A VALUE HAS BEEN INSERTED');
+END $$
+DELIMITER ;
+
+
+
+INSERT INTO countries VALUES(6,"BANGLA"),(7,'AFGHAN');
+SELECT * FROM updatetime;
+SELECT * FROM countries;

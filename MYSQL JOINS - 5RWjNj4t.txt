@@ -1,0 +1,48 @@
+
+CREATE TABLE IF NOT EXISTS student (
+ID integer NOT NULL AUTO_INCREMENT PRIMARY KEY,
+NAME varchar(20) ,
+AGE integer ,
+CITY integer,
+FOREIGN KEY (CITY) 
+REFERENCES city(cid)
+);
+
+-- here i have declared a foreign key which is primary key of another table , here 'city' . I also have a primary key which is different than foreign key . 
+-- then i declare foreign key with the 'FOREIGN KEY ()' and refer it to the column in the other table with same values or value type . now they these two columns are linked with eachother 
+
+CREATE TABLE IF NOT EXISTS city(
+CID integer PRIMARY KEY,
+CITY varchar(20) 
+);
+
+INSERT INTO student VALUES(1,"Varun",32,1),(2,"Bhakti",45,2),(3,"Sandeep",67,3),(4,"Kartik",69,2),(5,"Mahesh",98,2),(6,"Suresh",87,5);
+INSERT INTO city VALUES(1,"MUMBAI"),(2,"NEW YORK"),(3,"MIAMI"),(4,"DELHI");
+
+
+SELECT * FROM student ;
+SELECT * FROM city;
+
+SELECT * 
+FROM student 
+INNER JOIN city
+ON student.city = city.cid;
+-- returned common records that match in cid and city columns
+
+SELECT * 
+FROM student 
+LEFT JOIN city 
+ON student.city = city.cid;
+-- returns all records from left table (the table left of 'LEFT JOIN') and the matching records from cid and city of the both the tables ie primary and foreign key of the tables 
+
+
+SELECT * 
+FROM student
+RIGHT JOIN city 
+ON student.city = city.cid ;
+-- returns all the records from the right table (the right of the command RIGHT JOIN) and the ones that match 
+
+SELECT * 
+FROM student 
+CROSS JOIN city ;
+-- returns all 
